@@ -1,0 +1,9 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45" width="45" height="45">
+	<title>shield</title>
+	<defs>
+		<image  width="45" height="45" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtBAMAAADINP+pAAAAAXNSR0IB2cksfwAAAC1QTFRFAAAA/wAA/wAA/wAA/wAA/wAA/gAA/QAA/QAA/wAA/gAA/wAA/wAA/wAA/wAAnF4EjgAAAA90Uk5TAP/+/Pf4/eHi+vz9+dT1eRjSUwAAARRJREFUeJx9k7sRwjAMQCU4CgqIPULuaFmBGaip2IAVMgJsAhvAJqkocTYAW7YsOYlxkShPP0cfhHhsen+H+Mb4bB3wccI1Th6Ygyz2TysK5ni4s0XmaAA/KYqXKQOS0ep0VTw4IImXTvJacsCA+dJKUeeWf4UPGeLEPDjUODichAG4dcTH5pRgjocEkaNx2dZL7RC4izeQu3hl5twOA00vPF82FYe5/16/IeuFR3+ORzz104RimZTGsj2ZDpxF4tR5aKDcVriMwojzJGRelKCsWzyGhcAf5/k6v46TflEfa/2t8dr8SLG0+Z85HCt4nknKCjX/ujLFvqhSFvsFvIfjfdzsesmr9he2S+Fq3/1SN4U1wA+uXJo+5Pl1sQAAAABJRU5ErkJggg=="/>
+	</defs>
+	<style>
+	</style>
+	<use id="arrow-circle-down" href="#img1" x="0" y="0"/>
+</svg>

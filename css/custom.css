@@ -1,0 +1,68 @@
+/* WRITE HERE YOUR CUSTOM CSS IN ORDER TO MAKE ITEM UPDATES EASY */
+
+.contenedor {
+    width: 800px;  /* Mitad del tamaño original */
+    margin: 0 auto; /* Centrado */
+    border: 1px solid #ddd; /* Borde opcional */
+    overflow: hidden; /* Evita desbordamientos */
+}
+
+.imagen-ajustada {
+    width: 300px;
+    height: auto; /* Mantiene la proporción */
+  }
+
+  .owl-slide {
+    position: relative;
+    height: 100vh; /* Ajusta según necesites */
+    background-size: cover;
+    background-position: center;
+}
+
+.opacity-mask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.slide-text {
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Asegura que Owl Carousel no oculte los slides */
+.owl-item {
+    height: auto;
+}
+.owl-stage-outer, .owl-stage, .owl-item {
+    height: 100%;
+}
+
+.white {
+    color: white !important;
+}
+
+.slide-text {
+    color: white; /* Color base */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8); /* Mejor contraste */
+}
+
+/* Estilos de diagnóstico */
+.slide-text {
+    position: relative;
+    z-index: 9999 !important; /* Fuerza que esté encima */
+    border: 2px solid red !important; /* Para visualizar el área */
+    background-color: rgba(255,0,0,0.2) !important; /* Fondo semitransparente */
+}
+
+.opacity-mask {
+    position: relative;
+    z-index: 2;
+}
+
+.owl-slide {
+    position: relative;
+}
