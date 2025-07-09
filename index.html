@@ -75,7 +75,11 @@
 								<a href="index.html" class="show-submenu">Inicio</a>
 							</li>
 							<li class="submenu">
-								<a href="accessories.html" class="show-submenu">Licencias</a>
+								<a href="javascript:void(0);" class="show-submenu">Licencias <i class="icon-down-open-mini"></i></a>
+								<ul>
+									<li><a href="accessories.html">FortiGuard</a></li>
+									<li><a href="accessories2.html">FortiCare</a></li>
+								</ul>
 							</li>
 							<li class="submenu">
 								<a href="javascript:void(0);" class="show-submenu">Firewall <i class="icon-down-open-mini"></i></a>
@@ -420,24 +424,13 @@
 					loop: true,
 					autoplay: true,
 					autoplayTimeout: 5000,
+					autoplayHoverPause: true,
 					animateOut: 'fadeOut',
 					animateIn: 'fadeIn',
-					nav: false,
-					dots: true
-				});
-			});
-			$(document).ready(function(){
-				$(".owl-carousel").owlCarousel({
-					items: 1,
-					loop: true,
-					autoplay: true,
-					autoplayTimeout: 3000,
-					autoplayHoverPause: true,
 					nav: false,
 					dots: true,
 					smartSpeed: 800,
 					onInitialized: function() {
-						// Fuerza mostrar el texto al cargar
 						$('.owl-slide').css('opacity', 1);
 						$('.slide-text').fadeIn();
 					}
@@ -450,6 +443,7 @@
 					$(this).css('background-image', bg);
 				}
 			});
+			$('.owl-slide-animated').addClass('is-transitioned');
 			</script>
 	</body>
 </html>
