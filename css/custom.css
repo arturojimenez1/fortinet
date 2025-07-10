@@ -3,7 +3,7 @@
 .contenedor {
     width: 800px;  /* Mitad del tamaño original */
     margin: 0 auto; /* Centrado */
-    border: 1px solid #ddd; /* Borde opcional */
+
     overflow: hidden; /* Evita desbordamientos */
 }
 
