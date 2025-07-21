@@ -3,10 +3,12 @@
 .contenedor {
     width: 800px;  /* Mitad del tamaño original */
     margin: 0 auto; /* Centrado */
-
     overflow: hidden; /* Evita desbordamientos */
 }
-
+.contenedor-1{
+  width: 80%;
+  margin: 0 auto;
+}
 .imagen-ajustada {
     width: 300px;
     height: auto; /* Mantiene la proporción */
@@ -65,4 +67,44 @@
 
 .owl-slide {
     position: relative;
+}
+
+
+#licencias-fortinet .card-fortinet {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 20px;
+  transition: transform 0.3s ease;
+}
+
+#licencias-fortinet .card-fortinet:hover {
+  transform: translateY(-5px);
+}
+
+#licencias-fortinet img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+#licencias-fortinet .info {
+  background-color: #8ac814;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+}
+
+#licencias-fortinet .info h3 {
+  color: white;
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+#licencias-fortinet .cta {
+  display: inline-block;
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: 500;
 }
