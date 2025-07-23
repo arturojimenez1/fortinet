@@ -108,3 +108,8 @@
   text-decoration: none;
   font-weight: 500;
 }
+
+.form-check-input:checked {
+  background-color: #dc3545; /* Rojo de Bootstrap (danger) */
+  border-color: #dc3545;
+}
