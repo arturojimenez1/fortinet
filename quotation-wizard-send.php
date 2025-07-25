@@ -50,7 +50,7 @@ function sanitize_input($data) {
     return htmlspecialchars(trim(stripslashes($data)));
 }
 
-// Inicializar mensaje
+// Inicializar mensaje plano para email y mostrar
 $message = "Nueva solicitud de cotización desde el sitio web de Tikendo\n\n";
 $message .= "DETALLES DE LA SOLICITACIÓN\n";
 
@@ -101,6 +101,69 @@ $message .= "Teléfono: $telefono\n";
 $message .= "Correo: $user_email\n";
 $message .= "Comentarios: $comentarios\n";
 
+// Construir cuerpo HTML para correo (usando mensaje plano para resumen dentro del diseño)
+$user_name = htmlspecialchars($nombre . ' ' . $apellido);
+$htmlMessage = "
+<html>
+<head>
+  <style>
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      background-color: #f7f9fc;
+      color: #333;
+      margin: 0; padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      background: white;
+      margin: 30px auto;
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #007bff;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    p {
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+    .details {
+      background-color: #eef4fb;
+      padding: 15px;
+      border-radius: 6px;
+      margin-top: 20px;
+      font-size: 14px;
+      white-space: pre-wrap;
+      font-family: 'Poppins', monospace;
+    }
+    .footer {
+      margin-top: 30px;
+      font-size: 12px;
+      color: #999;
+      text-align: center;
+    }
+    .highlight {
+      color: #28a745;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class='container'>
+    <h2>Gracias por tu solicitud, $user_name</h2>
+    <p>Hemos recibido tu solicitud de cotización y pronto nos pondremos en contacto contigo.</p>
+    <p>Resumen de tu solicitud:</p>
+    <div class='details'>$message</div>
+    <p class='highlight'>Equipo Tikendo</p>
+    <div class='footer'>&copy; " . date('Y') . " Tikendo. Todos los derechos reservados.</div>
+  </div>
+</body>
+</html>
+";
+
 // Enviar con PHPMailer
 $mail = new PHPMailer(true);
 
@@ -113,19 +176,23 @@ try {
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
 
-    // Correo al administrador
+    // Correo al administrador (texto plano)
     $mail->setFrom($from_email, 'Tikendo');
     $mail->addAddress($admin_email);
     $mail->Subject = $subject;
     $mail->Body = $message;
+    $mail->AltBody = strip_tags($message);
+    $mail->isHTML(false);
     $mail->send();
 
-    // Confirmación al usuario (si proporcionó email válido)
+    // Confirmación al usuario (con HTML)
     if (!empty($user_email)) {
         $mail->clearAddresses();
         $mail->addAddress($user_email);
         $mail->Subject = "Gracias por tu solicitud de cotización - Tikendo";
-        $mail->Body = "Gracias por tu solicitud. Hemos recibido tu mensaje:\n\n$message";
+        $mail->Body = $htmlMessage;
+        $mail->AltBody = strip_tags($message);
+        $mail->isHTML(true);
         $mail->send();
     }
 
@@ -135,6 +202,7 @@ try {
     echo "Error al enviar el correo: {$mail->ErrorInfo}";
 }
 ?>
+
 
 
 <!-- END SEND MAIL SCRIPT -->   
