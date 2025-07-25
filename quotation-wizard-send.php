@@ -5,10 +5,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="HOMEALARMS - Alarms and security systems site template">
 	<meta name="author" content="Ansonika">
-	<title>HOMEALARMS - Alarms and security systems site template</title>
+	<title>KENDO - Seguridad a tu Alcance</title>
 
     <!-- Favicons-->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/fortiajolote.png" type="image/x-icon">
     <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
@@ -34,44 +34,108 @@
 </head>
 <body id="confirmation" onLoad="setTimeout('delayedRedirect()', 10000)">
 <?php
-						$mail = $_POST['email_quote'];
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-						/*$subject = "".$_POST['subject'];*/
-						$to = "info@domain.com";
-						$subject = "Quotation request from HOMEALARMS";
-						$headers = "From: HOMEALARMS web site <noreply@yourdomain.com>";
-						$message = "\nDETAILS"; 
-						$message .= "\nWhere do you need to install the Alarm? " . $_POST['location'];
-						$message .= "\nDo you have the armored door. If yes, how many? " . $_POST['armored_door'];
-						$message .= "\nHow many windows do you want to protect? " . $_POST['windows'];
-						$message .= "\nHow many areas do you want to protect? " . $_POST['zones'];
-						$message .= "\nDoes the house have secondary accesses?\n" ;
-						foreach($_POST['accesses'] as $value) 
-							{ 
-							$message .=   "- " .  trim(stripslashes($value)) . "\n"; 
-							};
-						$message .= "\nWhat is your budget? " . $_POST['budget'];
-						$message .= "\n\nUSER DETAILS"; 
-						$message .= "\nName: " . $_POST['firstname_quote'];
-						$message .= "\nLast Name: " . $_POST['lastname_quote'];
-						$message .= "\nEmail: " . $_POST['email_quote'];
-						$message .= "\nPhone number: " . $_POST['phone_quote'];
-						$message .= "\nAdditional info: " . $_POST['message_general'];
-						$message .= "\nTerms and conditions accepted: " . $_POST['terms'];
-						
-						//Receive Variable
-						$sentOk = mail($to,$subject,$message,$headers);
-						
-						//Confirmation page
-						$user = "$mail";
-						$usersubject = "Thank You";
-						$userheaders = "From: info@homealarms.com\n";
-						/*$usermessage = "Thank you for your time. Your request is successfully submitted.\n"; WITH OUT SUMMARY*/
-						//Confirmation page WITH  SUMMARY
-						$usermessage = "Thank you for your time. Your request is successfully submitted.\n\nSUMMARY\n$message"; 
-						mail($user,$usersubject,$usermessage,$userheaders);
-	
+require 'vendor/autoload.php';
+
+// Inicializar variables
+$admin_email = "arturo.jimenez@tikendo.com.mx";
+$from_email = "arturo.jimenez@tikendo.com.mx";
+$user_email = isset($_POST['correo']) ? trim($_POST['correo']) : '';
+$subject = "Cotización solicitada desde Tikendo Fortinet";
+
+// Función auxiliar para sanitizar entradas
+function sanitize_input($data) {
+    return htmlspecialchars(trim(stripslashes($data)));
+}
+
+// Inicializar mensaje
+$message = "Nueva solicitud de cotización desde el sitio web de Tikendo\n\n";
+$message .= "DETALLES DE LA SOLICITACIÓN\n";
+
+// Paso 1: Tipo de solución
+$tipo_seleccion = isset($_POST['tipo_seleccion']) ? sanitize_input($_POST['tipo_seleccion']) : '';
+if ($tipo_seleccion) {
+    $message .= "Tipo de solución: $tipo_seleccion\n";
+}
+
+// Paso 2: Detalles según tipo de solución
+$tipos = [
+    'servicios_tipo', 'hardware_tipo', 'licencia_tipo'
+];
+foreach ($tipos as $tipo) {
+    if (isset($_POST[$tipo])) {
+        $message .= ucwords(str_replace('_', ' ', $tipo)) . ": " . sanitize_input($_POST[$tipo]) . "\n";
+    }
+}
+
+// Paso 3 y 4: Campos adicionales
+$campos = [
+    'implementacion_tipo', 'soporte_tipo', 'capacitacion_tipo', 'fortigate_usuarios',
+    'switch_puertos', 'fortiap_ubicacion', 'fortimail_volumen', 'analyzer_logs',
+    'forticare_cobertura', 'seguridad_tipo', 'capacidad_tipo', 'dispositivo_tipo',
+    'adicional_tipo', 'implementacion_fortigate', 'implementacion_fortiap',
+    'implementacion_fortimail', 'implementacion_fortiswitch', 'soporte_bolsa',
+    'soporte_contrato', 'soporte_emergente', 'capacitacion_modalidad',
+    'fortigate_conectividad', 'fortiswitch_conectividad', 'fortiap_usuarios',
+    'fortimail_almacenamiento', 'fortianalyzer_monitoreo', 'forticare_respuesta',
+    'seguridad_tiempo', 'capacidad_tiempo', 'dispositivo_tiempo', 'adicional_tiempo'
+];
+foreach ($campos as $campo) {
+    if (isset($_POST[$campo])) {
+        $message .= ucwords(str_replace('_', ' ', $campo)) . ": " . sanitize_input($_POST[$campo]) . "\n";
+    }
+}
+
+// Paso 5: Detalles del usuario
+$nombre = isset($_POST['nombre']) ? sanitize_input($_POST['nombre']) : '';
+$apellido = isset($_POST['apellido']) ? sanitize_input($_POST['apellido']) : '';
+$telefono = isset($_POST['telefono']) ? sanitize_input($_POST['telefono']) : '';
+$comentarios = isset($_POST['comentarios']) ? sanitize_input($_POST['comentarios']) : '';
+
+$message .= "\nDETALLES DEL USUARIO\n";
+$message .= "Nombre: $nombre\n";
+$message .= "Apellido: $apellido\n";
+$message .= "Teléfono: $telefono\n";
+$message .= "Correo: $user_email\n";
+$message .= "Comentarios: $comentarios\n";
+
+// Enviar con PHPMailer
+$mail = new PHPMailer(true);
+
+try {
+    $mail->isSMTP();
+    $mail->Host = 'smtp.hostinger.com';
+    $mail->SMTPAuth = true;
+    $mail->Username = $from_email;
+    $mail->Password = 'Tikendo2025$'; // Reemplaza con tu contraseña real
+    $mail->SMTPSecure = 'tls';
+    $mail->Port = 587;
+
+    // Correo al administrador
+    $mail->setFrom($from_email, 'Tikendo');
+    $mail->addAddress($admin_email);
+    $mail->Subject = $subject;
+    $mail->Body = $message;
+    $mail->send();
+
+    // Confirmación al usuario (si proporcionó email válido)
+    if (!empty($user_email)) {
+        $mail->clearAddresses();
+        $mail->addAddress($user_email);
+        $mail->Subject = "Gracias por tu solicitud de cotización - Tikendo";
+        $mail->Body = "Gracias por tu solicitud. Hemos recibido tu mensaje:\n\n$message";
+        $mail->send();
+    }
+
+    echo "Correo enviado correctamente.";
+
+} catch (Exception $e) {
+    echo "Error al enviar el correo: {$mail->ErrorInfo}";
+}
 ?>
+
 
 <!-- END SEND MAIL SCRIPT -->   
 <div id="success">

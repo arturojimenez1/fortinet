@@ -52,14 +52,6 @@
     text-shadow: 1px 1px 3px rgba(0,0,0,0.8); /* Mejor contraste */
 }
 
-/* Estilos de diagnóstico */
-.slide-text {
-    position: relative;
-    z-index: 9999 !important; /* Fuerza que esté encima */
-    border: 2px solid red !important; /* Para visualizar el área */
-    background-color: rgba(255,0,0,0.2) !important; /* Fondo semitransparente */
-}
-
 .opacity-mask {
     position: relative;
     z-index: 2;
