@@ -1,0 +1,2 @@
+2025-07-28 23:24:23 - Error al enviar correo: SMTP Error: Could not authenticate.
+2025-07-28 23:25:58 - Error al enviar correo: SMTP Error: Could not authenticate.

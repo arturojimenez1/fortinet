@@ -5,10 +5,10 @@ $('form#custom').attr('action', 'quotation-wizard-send.php');
 $(function() {
 'use strict';
 				$('#custom').stepy({
-					backLabel:	'Previous step',
+					backLabel:	'Regresar',
 					block:		true,
 					errorImage:	true,
-					nextLabel:	'Next step',
+					nextLabel:	'Siguiente',
 					titleClick:	true,
 					description:	true,
 					legend:			false,

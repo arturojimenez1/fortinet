@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="HOMEALARMS - Alarms and security systems site template">
+	<meta name="description" content="KENDO - Seguridad a tu Alcance">
 	<meta name="author" content="Ansonika">
 	<title>KENDO - Seguridad a tu Alcance</title>
 
@@ -30,7 +30,6 @@
         window.location = "index.html"
     }
     </script>
-
 </head>
 <body id="confirmation" onLoad="setTimeout('delayedRedirect()', 10000)">
 <?php
@@ -43,7 +42,7 @@ require 'vendor/autoload.php';
 $admin_email = "arturo.jimenez@tikendo.com.mx";
 $from_email = "arturo.jimenez@tikendo.com.mx";
 $user_email = isset($_POST['correo']) ? trim($_POST['correo']) : '';
-$subject = "Cotización solicitada desde Tikendo Fortinet";
+$subject = "Nueva Solicitud de Cotización - Tikendo Fortinet";
 
 // Función auxiliar para sanitizar entradas
 function sanitize_input($data) {
@@ -51,8 +50,8 @@ function sanitize_input($data) {
 }
 
 // Inicializar mensaje plano para email y mostrar
-$message = "Nueva solicitud de cotización desde el sitio web de Tikendo\n\n";
-$message .= "DETALLES DE LA SOLICITACIÓN\n";
+$message = "Nueva solicitud de cotización recibida desde el sitio web de Tikendo\n\n";
+$message .= "DETALLES DE LA SOLICITUD\n";
 
 // Paso 1: Tipo de solución
 $tipo_seleccion = isset($_POST['tipo_seleccion']) ? sanitize_input($_POST['tipo_seleccion']) : '';
@@ -94,78 +93,57 @@ $apellido = isset($_POST['apellido']) ? sanitize_input($_POST['apellido']) : '';
 $telefono = isset($_POST['telefono']) ? sanitize_input($_POST['telefono']) : '';
 $comentarios = isset($_POST['comentarios']) ? sanitize_input($_POST['comentarios']) : '';
 
-$message .= "\nDETALLES DEL USUARIO\n";
+$message .= "\nDETALLES DEL SOLICITANTE\n";
 $message .= "Nombre: $nombre\n";
 $message .= "Apellido: $apellido\n";
 $message .= "Teléfono: $telefono\n";
 $message .= "Correo: $user_email\n";
 $message .= "Comentarios: $comentarios\n";
 
-// Construir cuerpo HTML para correo (usando mensaje plano para resumen dentro del diseño)
 $user_name = htmlspecialchars($nombre . ' ' . $apellido);
 $htmlMessage = "
 <html>
-<head>
-  <style>
-    body {
-      font-family: 'Poppins', Arial, sans-serif;
-      background-color: #f7f9fc;
-      color: #333;
-      margin: 0; padding: 0;
-    }
-    .container {
-      max-width: 600px;
-      background: white;
-      margin: 30px auto;
-      padding: 20px 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-    h2 {
-      color: #007bff;
-      margin-bottom: 20px;
-      font-weight: 700;
-    }
-    p {
-      line-height: 1.6;
-      margin-bottom: 10px;
-    }
-    .details {
-      background-color: #eef4fb;
-      padding: 15px;
-      border-radius: 6px;
-      margin-top: 20px;
-      font-size: 14px;
-      white-space: pre-wrap;
-      font-family: 'Poppins', monospace;
-    }
-    .footer {
-      margin-top: 30px;
-      font-size: 12px;
-      color: #999;
-      text-align: center;
-    }
-    .highlight {
-      color: #28a745;
-      font-weight: 600;
-    }
-  </style>
-</head>
-<body>
-  <div class='container'>
-    <h2>Gracias por tu solicitud, $user_name</h2>
-    <p>Hemos recibido tu solicitud de cotización y pronto nos pondremos en contacto contigo.</p>
-    <p>Resumen de tu solicitud:</p>
-    <div class='details'>$message</div>
-    <p class='highlight'>Equipo Tikendo</p>
-    <div class='footer'>&copy; " . date('Y') . " Tikendo. Todos los derechos reservados.</div>
-  </div>
-</body>
+  <body style='margin: 0; padding: 0; font-family: Poppins, Arial, sans-serif; background-color: #f5f6fa;'>
+    <table align='center' border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 650px; padding: 40px 20px;'>
+      <tr>
+        <td align='center'>
+          <table border='0' cellpadding='0' cellspacing='0' width='100%' style='background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08);'>
+            <tr>
+              <td align='center' style='padding: 30px 20px; background: linear-gradient(135deg, #000000ff, #000000ff);'>
+                <img src='cid:logo_cid' alt='Tikendo Logo' style='max-width: 120px; height: auto; margin-bottom: 10px;'>
+                <h1 style='color: #ffffff; font-size: 28px; font-weight: 600; margin: 0;'>Tikendo Fortinet</h1>
+                <p style='color: #e6f0ff; font-size: 16px; font-weight: 400; margin: 5px 0 0;'>KENDO - Seguridad a tu Alcance</p>
+              </td>
+            </tr>
+            <tr>
+              <td style='padding: 40px 30px; font-size: 16px; color: #2d3748; line-height: 1.6;'>
+                <p style='margin: 0 0 20px; font-weight: 500;'>Estimado equipo,</p>
+                <p>Se ha recibido una nueva solicitud de cotización a través del sitio web de Tikendo Fortinet. A continuación, se detallan los datos proporcionados:</p>
+                <div style='background-color: #f8fafc; padding: 20px; border-radius: 8px; border-left: 4px solid #ff0000ff; font-size: 14px; white-space: pre-wrap; font-family: monospace; color: #2d3748;'>
+                  $message
+                </div>
+                <p style='margin: 30px 0 20px;'>Por favor, pónganse en contacto con el solicitante para dar seguimiento a la brevedad.</p>
+                <p style='margin: 0; font-weight: 500; color: #000000ff;'>Atentamente,<br>Equipo Tikendo</p>
+              </td>
+            </tr>
+            <tr>
+              <td align='center' style='padding: 25px; background-color: #f8fafc; font-size: 13px; color: #718096;'>
+                &copy; " . date('Y') . " Tikendo. Todos los derechos reservados.<br>
+                <a href='' style='color: #000000ff; text-decoration: none; font-weight: 500;'></a>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
 </html>
 ";
 
 // Enviar con PHPMailer
 $mail = new PHPMailer(true);
+$mail->CharSet = 'UTF-8';       // Corrige acentos
+$mail->Encoding = 'base64';     // Evita caracteres raros
 
 try {
     $mail->isSMTP();
@@ -176,25 +154,25 @@ try {
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
 
-    // Correo al administrador (texto plano)
-    $mail->setFrom($from_email, 'Tikendo');
+    // Incrustar el logo
+    $logo_path = __DIR__ . '/img/fortiajolote.png';
+    if (file_exists($logo_path)) {
+        $mail->addEmbeddedImage($logo_path, 'logo_cid', 'fortiajolote.png');
+    } else {
+        throw new Exception('El archivo del logo no se encuentra en: ' . $logo_path);
+    }
+
+    // Correo al administrador
+    $mail->setFrom($from_email, 'Sitio Web Tikendo');
+    if (!empty($user_email)) {
+        $mail->addReplyTo($user_email, $user_name);
+    }
     $mail->addAddress($admin_email);
     $mail->Subject = $subject;
-    $mail->Body = $message;
+    $mail->Body = $htmlMessage;
     $mail->AltBody = strip_tags($message);
-    $mail->isHTML(false);
+    $mail->isHTML(true);
     $mail->send();
-
-    // Confirmación al usuario (con HTML)
-    if (!empty($user_email)) {
-        $mail->clearAddresses();
-        $mail->addAddress($user_email);
-        $mail->Subject = "Gracias por tu solicitud de cotización - Tikendo";
-        $mail->Body = $htmlMessage;
-        $mail->AltBody = strip_tags($message);
-        $mail->isHTML(true);
-        $mail->send();
-    }
 
     echo "Correo enviado correctamente.";
 
@@ -203,20 +181,18 @@ try {
 }
 ?>
 
-
-
 <!-- END SEND MAIL SCRIPT -->   
 <div id="success">
 	<div class="icon icon--order-success svg">
 		<svg xmlns="http://www.w3.org/2000/svg" width="72px" height="72px">
-                <g fill="none" stroke="#8EC343" stroke-width="2">
-                  <circle cx="36" cy="36" r="35" style="stroke-dasharray:240px, 240px; stroke-dashoffset: 480px;"></circle>
-                  <path d="M17.417,37.778l9.93,9.909l25.444-25.393" style="stroke-dasharray:50px, 50px; stroke-dashoffset: 0px;"></path>
-                </g>
-              </svg>
+            <g fill="none" stroke="#8EC343" stroke-width="2">
+              <circle cx="36" cy="36" r="35" style="stroke-dasharray:240px, 240px; stroke-dashoffset: 480px;"></circle>
+              <path d="M17.417,37.778l9.93,9.909l25.444-25.393" style="stroke-dasharray:50px, 50px; stroke-dashoffset: 0px;"></path>
+            </g>
+        </svg>
 	</div>
-	<h4><span>Thank you!</span>Quotation request sent.</h4>
-	<small>You will be redirect back in 10 seconds.</small>
+	<h4><span>¡Gracias!</span> Solicitud de cotización enviada.</h4>
+	<small>Serás redirigido a la página de inicio nuevamente en 10 segundos.</small>
 </div>
 </body>
 </html>

@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Tikendo - Especialistas en soluciones de ciberseguridad Fortinet en México">
     <meta name="keywords" content="Fortinet, ciberseguridad, firewalls, FortiGate, Tikendo, México">
-    <meta name="author" content="Ansonika">
+    <meta name="author" content="">
     <meta property="og:title" content="Tikendo - Seguridad a tu Alcance">
     <meta property="og:description" content="Soluciones de ciberseguridad Fortinet para proteger tu negocio con tecnología de vanguardia.">
     <meta property="og:image" content="img/logos.png">
-    <meta property="og:url" content="https://tikendo.com.mx">
+
     <title>Tikendo - Seguridad a tu Alcance</title>
 
     <!-- Favicons -->
@@ -71,7 +71,7 @@
                     <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
                     <div class="main-menu">
                         <div id="header_menu">
-                            <img src="img/logos.png" width="190" height="44" alt="Tikendo Logo">
+                            <img src="img/logos.png" width="190" height="44" alt="Tikendo Logo" loading="lazy">
                         </div>
                         <a href="#" class="open_close" id="close_in"><i class="icon_close"></i></a>
                         <ul>
@@ -83,11 +83,11 @@
                                 <ul>
                                     <li><a href="accessories.html">FortiGuard</a></li>
                                     <li><a href="accessories2.html">FortiCare</a></li>
-                                    <li><a href="accessories2.html">Bundles de Protección</a></li>
-                                    <li><a href="accessories2.html">Para Productos Virtuales</a></li>
-                                    <li><a href="accessories2.html">Dispositivos Específicos</a></li>
-                                    <li><a href="accessories2.html">FortiCloud</a></li>
-                                    <li><a href="accessories2.html">FortiSandbox Cloud</a></li>
+                                    <li><a href="#">Bundles de Protección</a></li>
+                                    <li><a href="#">Para Productos Virtuales</a></li>
+                                    <li><a href="#">Dispositivos Específicos</a></li>
+                                    <li><a href="#">FortiCloud</a></li>
+                                    <li><a href="#">FortiSandbox Cloud</a></li>
                                 </ul>
                             </li>
                             <li class="submenu">
@@ -113,6 +113,9 @@
                             <li class="submenu">
                                 <a href="#intro-cotizacion" class="show-submenu">Cotización</a>
                             </li>
+                           <!-- <li class="submenu">
+                                <a href="blog.html" class="show-submenu">Blog</a>
+                            </li> -->
                         </ul>
                     </div><!-- End main-menu -->
                 </nav>
@@ -133,7 +136,6 @@
                                         <p class="owl-slide-animated owl-slide-subtitle">
                                             Protege tu red con soluciones de seguridad avanzadas de Fortinet. Con nuestra tecnología, la seguridad no conoce fronteras.
                                         </p>
-                                        <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="service_layout_1.html" role="button">Leer Más</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -150,7 +152,6 @@
                                         <p class="owl-slide-animated owl-slide-subtitle">
                                             Liderando el camino en innovación de ciberseguridad, Fortinet ofrece protección integral para tus datos y recursos.
                                         </p>
-                                        <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="service_layout_1.html" role="button">Leer Más</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -167,7 +168,6 @@
                                         <p class="owl-slide-animated owl-slide-subtitle">
                                             Confía en Fortinet para asegurar tus conexiones. Desde el centro de datos hasta el borde de la red, tenemos la solución perfecta para ti.
                                         </p>
-                                        <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="service_layout_1.html" role="button">Leer Más</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -184,7 +184,6 @@
                                         <p class="owl-slide-animated owl-slide-subtitle">
                                             Fortinet está a la vanguardia de la ciberseguridad, ofreciendo soluciones escalables y efectivas para empresas de todos los tamaños.
                                         </p>
-                                        <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="service_layout_1.html" role="button">Leer Más</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -201,7 +200,6 @@
                                         <p class="owl-slide-animated owl-slide-subtitle">
                                             En Fortinet, la seguridad no es opcional. Es una parte fundamental de todo lo que hacemos.
                                         </p>
-                                        <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="service_layout_1.html" role="button">Leer Más</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -341,28 +339,39 @@
             </div>
         </div>
 
-        <div class="bg_content magnific">
-            <div>
-                <h3>Video de soluciones FortiGate</h3>
-                <p>
-                    Descubre cómo las soluciones FortiGate protegen tu red con tecnología de vanguardia.
-                </p>
-                <a href="https://www.youtube.com/watch?v=X02tZiqC1uk" class="video"><i class="icon-play-circled2-1" aria-label="Ver video de FortiGate"></i></a>
-            </div>
-        </div><!-- End bg_content -->
+        <div class="video-wrapper" id="videoWrapper">
+            <div class="thumbnail-overlay" id="thumbnail"></div>
+        </div>
+
+                <script>
+                const wrapper = document.getElementById('videoWrapper');
+                const thumbnail = document.getElementById('thumbnail');
+
+                thumbnail.addEventListener('click', () => {
+                    const iframe = document.createElement('iframe');
+                    iframe.setAttribute('src', 'video/Soluciones Fortinet en México – Tu aliado en ciberseguridad es Tikendo.mp4');
+                    iframe.setAttribute('allow', 'autoplay; encrypted-media');
+                    iframe.setAttribute('allowfullscreen', '');
+                    iframe.style.width = '100%';
+                    iframe.style.height = '100%';
+
+                    wrapper.innerHTML = '';
+                    wrapper.appendChild(iframe);
+                });
+                </script>
 
         <br>
 
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div id="intro-servicios">
-                    <h2>Servicios de Implementación para FortiGate</h2>
-                    <p class="lead">
-                        Servicios para empresas que buscan maximizar la seguridad y el rendimiento de sus firewalls FortiGate.
-                    </p>
+        <div id="intro-servicios" class="row justify-content-center">
+                <div class="col-md-8">
+                    <div id="intro">
+                        <h2>Servicios de Implementación para FortiGate</h2>
+                        <p class="lead">
+                            Servicios para empresas que buscan maximizar la seguridad y el rendimiento de sus firewalls FortiGate.
+                        </p>
+                    </div>
                 </div>
-            </div>
-        </div><!-- End row -->
+            </div><!-- End row -->
 
         <div id="feat_home">
             <div class="container margin_60_25">
@@ -420,9 +429,9 @@
 
         <br>
 
-        <div class="row justify-content-center">
+        <div id="intro-servicios1" class="row justify-content-center">
             <div class="col-md-8">
-                <div id="intro-servicios1">
+                <div id="intro">
                     <h2>Servicios de Soporte FortiGate: Asistencia Técnica Especializada 24/7</h2>
                     <p class="lead">
                         Protege tu inversión en seguridad con nuestro soporte técnico certificado para FortiGate. Ofrecemos planes flexibles adaptados a las necesidades de tu empresa, garantizando máxima disponibilidad, respuesta rápida y resolución de incidencias por expertos.
@@ -461,7 +470,7 @@
         <br>
         <hr>
 
-        <div class="row justify-content-center">
+        <div id="intro-capacitacion" class="row justify-content-center">
             <div class="col-md-8">
                 <div id="intro">
                     <h2>Capacitación Fortinet</h2>
@@ -474,7 +483,7 @@
         
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div id="intro-capacitacion">
+                <div id="intro">
                     <br>
                     <h2>Curso FortiGate Security & Infrastructure</h2>
                     <p class="lead">
@@ -549,7 +558,7 @@
 
             <hr>
 
-            <h3>Cursos y Talleres</h3>
+            <h3 style="text-align: center;">Cursos y Talleres</h3>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -582,6 +591,74 @@
                 </tbody>
             </table>
         </div><!-- End container -->
+
+        <!-- <div class="container margin_60">
+        <div class="text-center">
+				<h2>Nuestro BLog</h2>
+				<p class="lead">
+					Descubre consejos y novedades en ciberseguridad Fortinet para proteger tu empresa y mantenerte actualizado.
+				</p>
+			</div> -->
+			
+			<!--Team Carousel -->
+			<!--<div class="row">
+				<div class="owl-carousel owl-theme team-carousel">
+					<div class="team-item" onclick="window.location.href='blog.html'" style="cursor:pointer;">
+                        <div class="team-item-img">
+                            <img src="img/team/team-1.jpg" alt="">
+                            <div class="team-item-detail">
+                                <div class="team-item-detail-inner">
+                                    <h4>Mitchell Young</h4>
+                                    <p>Similique sunt culpa qui officia deserunt mollitia animi dolorum fuga.</p>
+                                    <ul class="social">
+                                        <li><a href="#0"><i class="icon-facebook"></i></a></li>
+                                        <li><a href="#0"><i class="icon-twitter"></i></a></li>
+                                        <li><a href="#0"><i class="icon-google"></i></a></li>
+                                        <li><a href="#0"><i class="icon-linkedin"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+					<div class="team-item" onclick="window.location.href='blog.html'" style="cursor:pointer;">
+                        <div class="team-item-img">
+                            <img src="img/team/team-1.jpg" alt="">
+                            <div class="team-item-detail">
+                                <div class="team-item-detail-inner">
+                                    <h4>Mitchell Young</h4>
+                                    <p>Similique sunt culpa qui officia deserunt mollitia animi dolorum fuga.</p>
+                                    <ul class="social">
+                                        <li><a href="#0"><i class="icon-facebook"></i></a></li>
+                                        <li><a href="#0"><i class="icon-twitter"></i></a></li>
+                                        <li><a href="#0"><i class="icon-google"></i></a></li>
+                                        <li><a href="#0"><i class="icon-linkedin"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+					<div class="team-item" onclick="window.location.href='blog.html'" style="cursor:pointer;">
+                        <div class="team-item-img">
+                            <img src="img/team/team-1.jpg" alt="">
+                            <div class="team-item-detail">
+                                <div class="team-item-detail-inner">
+                                    <h4>Mitchell Young</h4>
+                                    <p>Similique sunt culpa qui officia deserunt mollitia animi dolorum fuga.</p>
+                                    <ul class="social">
+                                        <li><a href="#0"><i class="icon-facebook"></i></a></li>
+                                        <li><a href="#0"><i class="icon-twitter"></i></a></li>
+                                        <li><a href="#0"><i class="icon-google"></i></a></li>
+                                        <li><a href="#0"><i class="icon-linkedin"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+				</div>
+			</div><!--End Team Carousel-->
 
         <div class="container margin_60_35">
             <div class="row add_bottom_30" id="intro-cotizacion">
@@ -1301,8 +1378,15 @@
                                 <label for="comentarios">Comentarios</label>
                                 <textarea id="comentarios" name="comentarios" class="form-control" rows="3"></textarea>
                             </div>
+                            <div class="form-group form-check">
+                                <input type="checkbox" id="aceptar-terminos" name="aceptar-terminos" class="form-check-input" required>
+                                <label class="form-check-label" for="aceptar-terminos">
+                                    Acepto los <a href="#" data-bs-toggle="modal" data-bs-target="#myModal">Términos y Condiciones</a>
+                                </label>
+                            </div>
                         </fieldset>
                         <input type="submit" class="finish" value="Finalizar">
+                        
                     </form>
                 </div>
             </div><!-- End row -->
@@ -1320,7 +1404,7 @@
                     <h3>Descubre Más</h3>
                     <ul>
                         <li><a href="https://tikendo.com.mx/">Sobre Nosotros</a></li>
-                        <li><a href="quotation_wizard.html">Cotiza</a></li>
+                        <li><a href="index.html#intro-cotizacion" class="show-submenu">Cotización</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-12" id="contact_bg">
@@ -1339,10 +1423,9 @@
             </div><!-- End row -->
             <div id="social_footer">
                 <ul>
-                    <li><a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a></li>
-                    <li><a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a></li>
-                    <li><a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a></li>
-                    <li><a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a></li>
+                    <li><a href="https://www.instagram.com/ti_kendo?igsh=MXB1OXZuNnkxZnZ4Mg==" aria-label="Instagram"><i class="bi bi-instagram"></i></a></li>
+                    <li><a href="https://www.facebook.com/share/1ALDGYLnvf/" aria-label="Facebook"><i class="bi bi-facebook"></i></a></li>
+                    <li><a href="https://x.com/ti_kndo?t=-nFIB1SpN4IcHeqgp8pUDg&s=09" aria-label="X"><i class="bi bi-twitter-x"></i></a></li>
                 </ul>
             </div>
         </div><!-- End container -->
@@ -1364,10 +1447,23 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <h5>Ei aliquip regione</h5>
-                    <p>Lorem ipsum dolor sit amet, nibh omnium in eum, ne per omittam eligendi efficiantur. Eos at mundi dolorem, ad cum omnes utroque fastidii, est fastidii apeirian ea. Ne duo diceret partiendo voluptatum, vel at iudico civibus. Purto erant aliquando ex eos, at vel odio modo. In mel tollit reprehendunt, ut usu praesent posidonium cotidieque. Clita assentior maiestatis sea in, at electram voluptaria mel. Tale nusquam adipisci ad mel, partem civibus no vix, sea no accusata dignissim.</p>
-                    <h5>Altera vocibus eleifend</h5>
-                    <p>No dico agam error qui, adhuc dicat argumentum sit in. Munere virtute ea ius. Mei an graeco repudiandae disputationi, ex per animal invidunt, probo civibus ne duo. Mea ad officiis temporibus, vim ne idque probatus phaedrum, elit delectus indoctum te has. No sea reprimique necessitatibus, ut usu quas falli.</p>
+                    <h5>1. Aceptación de los términos</h5>
+                    <p>Al utilizar este sitio web o contratar nuestros servicios, usted acepta cumplir con estos Términos y Condiciones. Si no está de acuerdo, por favor no utilice nuestros servicios.</p>
+
+                    <h5>2. Uso del sitio</h5>
+                    <p>Este sitio está destinado únicamente para uso legal. Usted se compromete a no utilizarlo para actividades que violen la ley o los derechos de terceros.</p>
+
+                    <h5>3. Propiedad intelectual</h5>
+                    <p>Todo el contenido presente en este sitio, incluyendo textos, imágenes, logotipos y diseños, es propiedad de la empresa o sus licenciantes, y está protegido por leyes de derechos de autor.</p>
+
+                    <h5>4. Responsabilidad limitada</h5>
+                    <p>No nos hacemos responsables por daños o pérdidas que puedan surgir del uso o la imposibilidad de uso del sitio, incluyendo interrupciones, errores o virus.</p>
+
+                    <h5>5. Modificaciones</h5>
+                    <p>Nos reservamos el derecho de modificar estos Términos y Condiciones en cualquier momento. Las modificaciones entrarán en vigencia una vez publicadas en esta página.</p>
+
+                    <h5>6. Contacto</h5>
+                    <p>Si tiene preguntas sobre estos Términos y Condiciones, puede contactarnos al correo electrónico: <a href="mailto:ventas@tikendo.mx">ventas@tikendo.mx</a>.</p>
                 </div>
             </div>
         </div>
@@ -1386,186 +1482,208 @@
     <script src="js/jquery.stepy.min.js"></script>
     <script src="js/quotation-validate.js"></script>
 
-    <!-- Inicialización del carrusel -->
-    <script>
-    $(document).ready(function() {
-        $(".owl-carousel").owlCarousel({
-            items: 1,
-            loop: true,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            autoplayHoverPause: true,
-            animateOut: 'fadeOut',
-            animateIn: 'fadeIn',
-            nav: false,
-            dots: true,
-            smartSpeed: 800,
-            onInitialized: function() {
-                $('.owl-slide').css('opacity', 1);
-                $('.slide-text').fadeIn();
-            }
-        });
+    <!-- Inicialización del carrusel y Formulario -->
+        <script>
+            $(document).ready(function() {
+                $(".owl-carousel").owlCarousel({
+                    items: 1,
+                    loop: true,
+                    autoplay: true,
+                    autoplayTimeout: 5000,
+                    autoplayHoverPause: true,
+                    animateOut: 'fadeOut',
+                    animateIn: 'fadeIn',
+                    nav: false,
+                    dots: true,
+                    smartSpeed: 800,
+                    onInitialized: function() {
+                        $('.owl-slide').css('opacity', 1);
+                        $('.slide-text').fadeIn();
+                    }
+                });
 
-        $('.background-image').each(function() {
-            var bg = $(this).attr('data-background');
-            if (bg) {
-                $(this).css('background-image', 'url(' + bg + ')');
-            }
-        });
-        $('.owl-slide-animated').addClass('is-transitioned');
-    });
-
-
-	
-    // Formulario: Paso 1 -> Paso 2
-    document.querySelectorAll('input.selector').forEach((radio) => {
-        radio.addEventListener('change', function() {
-            const selected = this.value;
-            document.querySelectorAll('.step2-group').forEach(el => el.style.display = 'none');
-            const step2 = document.getElementById('step2-' + selected);
-            if (step2) step2.style.display = 'block';
-            document.querySelectorAll('.step3-group').forEach(el => el.style.display = 'none');
-            document.querySelectorAll('.step4-group').forEach(el => el.style.display = 'none');
-        });
-    });
-
-    // Paso 2 -> Paso 3
-    document.querySelectorAll('input.servicio-opcion, input.hardware-opcion, input.licencia-opcion').forEach((radio) => {
-        radio.addEventListener('change', function() {
-            const selected = this.value;
-            document.querySelectorAll('.step3-group').forEach(el => el.style.display = 'none');
-            const step3 = document.getElementById('step3-' + selected);
-            if (step3) step3.style.display = 'block';
-            document.querySelectorAll('.step4-group').forEach(el => el.style.display = 'none');
-        });
-    });
-
-    // Paso 3 -> Paso 4
-    document.querySelectorAll('input.proyecto-opcion').forEach((radio) => {
-        radio.addEventListener('change', function() {
-            // Ocultar todos los grupos del Paso 4
-            document.querySelectorAll('.step4-group').forEach(el => {
-                el.style.display = 'none';
+                $('.background-image').each(function() {
+                    var bg = $(this).attr('data-background');
+                    if (bg) {
+                        $(this).css('background-image', 'url(' + bg + ')');
+                    }
+                });
+                $('.owl-slide-animated').addClass('is-transitioned');
             });
 
-            // Determinar el ID del grupo del Paso 4 a mostrar
-            let step4GroupId;
-            if (this.name === 'capacitacion_tipo') {
-                // Para cualquier opción de capacitación, mostrar step4-capacitacion
-                step4GroupId = 'step4-capacitacion';
-            } else if (this.name === 'implementacion_tipo') {
-                step4GroupId = `step4-${this.value}`;
-            } else if (this.name === 'soporte_tipo') {
-                step4GroupId = `step4-${this.value}`;
-            }
+            // Formulario: Paso 1 -> Paso 2
+            document.querySelectorAll('input.selector').forEach((radio) => {
+                radio.addEventListener('change', function() {
+                    const selected = this.value;
+                    document.querySelectorAll('.step2-group').forEach(el => el.style.display = 'none');
+                    const step2 = document.getElementById('step2-' + selected);
+                    if (step2) step2.style.display = 'block';
+                    document.querySelectorAll('.step3-group').forEach(el => el.style.display = 'none');
+                    document.querySelectorAll('.step4-group').forEach(el => el.style.display = 'none');
+                });
+            });
 
-            // Para hardware y licencias, mapear según el grupo del Paso 3
-            const step3Parent = this.closest('.step3-group').id;
-            if (step3Parent === 'step3-fortigate') {
-                step4GroupId = 'step4-fortigate-conectividad';
-            } else if (step3Parent === 'step3-switch') {
-                step4GroupId = 'step4-fortiswitch-conectividad';
-            } else if (step3Parent === 'step3-fortiap') {
-                step4GroupId = 'step4-fortiap-usuarios';
-            } else if (step3Parent === 'step3-fortimail') {
-                step4GroupId = 'step4-fortimail-almacenamiento';
-            } else if (step3Parent === 'step3-analyzer') {
-                step4GroupId = 'step4-fortianalyzer-monitoreo';
-            } else if (step3Parent === 'step3-forticare') {
-                step4GroupId = 'step4-forticare-respuesta';
-            } else if (step3Parent === 'step3-seguridad') {
-                step4GroupId = 'step4-seguridad-tiempo';
-            } else if (step3Parent === 'step3-capacidad') {
-                step4GroupId = 'step4-capacidad-tiempo';
-            } else if (step3Parent === 'step3-dispositivo') {
-                step4GroupId = 'step4-dispositivo-tiempo';
-            } else if (step3Parent === 'step3-adicional') {
-                step4GroupId = 'step4-adicional-tiempo';
-            }
+            // Paso 2 -> Paso 3
+            document.querySelectorAll('input.servicio-opcion, input.hardware-opcion, input.licencia-opcion').forEach((radio) => {
+                radio.addEventListener('change', function() {
+                    const selected = this.value;
+                    document.querySelectorAll('.step3-group').forEach(el => el.style.display = 'none');
+                    const step3 = document.getElementById('step3-' + selected);
+                    if (step3) step3.style.display = 'block';
+                    document.querySelectorAll('.step4-group').forEach(el => el.style.display = 'none');
+                });
+            });
 
-            // Mostrar el grupo correspondiente del Paso 4
-            const step4Group = document.getElementById(step4GroupId);
-            if (step4Group) {
-                step4Group.style.display = 'block';
-            }
-        });
-    });
+            // Paso 3 -> Paso 4
+            document.querySelectorAll('input.proyecto-opcion').forEach((radio) => {
+                radio.addEventListener('change', function() {
+                    // Ocultar todos los grupos del Paso 4
+                    document.querySelectorAll('.step4-group').forEach(el => {
+                        el.style.display = 'none';
+                    });
 
-    // Ajuste adicional para hardware y licencias del Paso 3
-    document.querySelectorAll('input[name="fortigate_usuarios"], input[name="switch_puertos"], input[name="fortiap_ubicacion"], input[name="fortimail_volumen"], input[name="analyzer_logs"], input[name="forticare_cobertura"], input[name="seguridad_tipo"], input[name="capacidad_tipo"], input[name="dispositivo_tipo"], input[name="adicional_tipo"]').forEach((radio) => {
-        radio.addEventListener('change', function() {
-            document.querySelectorAll('.step4-group').forEach(el => el.style.display = 'none');
-            const step3Parent = this.closest('.step3-group').id;
-            let step4GroupId;
-            if (step3Parent === 'step3-fortigate') {
-                step4GroupId = 'step4-fortigate-conectividad';
-            } else if (step3Parent === 'step3-switch') {
-                step4GroupId = 'step4-fortiswitch-conectividad';
-            } else if (step3Parent === 'step3-fortiap') {
-                step4GroupId = 'step4-fortiap-usuarios';
-            } else if (step3Parent === 'step3-fortimail') {
-                step4GroupId = 'step4-fortimail-almacenamiento';
-            } else if (step3Parent === 'step3-analyzer') {
-                step4GroupId = 'step4-fortianalyzer-monitoreo';
-            } else if (step3Parent === 'step3-forticare') {
-                step4GroupId = 'step4-forticare-respuesta';
-            } else if (step3Parent === 'step3-seguridad') {
-                step4GroupId = 'step4-seguridad-tiempo';
-            } else if (step3Parent === 'step3-capacidad') {
-                step4GroupId = 'step4-capacidad-tiempo';
-            } else if (step3Parent === 'step3-dispositivo') {
-                step4GroupId = 'step4-dispositivo-tiempo';
-            } else if (step3Parent === 'step3-adicional') {
-                step4GroupId = 'step4-adicional-tiempo';
-            }
-            const step4Group = document.getElementById(step4GroupId);
-            if (step4Group) {
-                step4Group.style.display = 'block';
-            }
-        });
-    });
+                    // Determinar el ID del grupo del Paso 4 a mostrar
+                    let step4GroupId;
+                    if (this.name === 'capacitacion_tipo') {
+                        // Para cualquier opción de capacitación, mostrar step4-capacitacion
+                        step4GroupId = 'step4-capacitacion';
+                    } else if (this.name === 'implementacion_tipo') {
+                        step4GroupId = `step4-${this.value}`;
+                    } else if (this.name === 'soporte_tipo') {
+                        step4GroupId = `step4-${this.value}`;
+                    }
 
-	 // Paso 4 -> Paso 5 (común para todos)
-    document.querySelectorAll('input[name="implementacion_fortigate"], input[name="implementacion_fortiap"], input[name="implementacion_fortimail"], input[name="implementacion_fortiswitch"], input[name="soporte_bolsa"], input[name="soporte_contrato"], input[name="soporte_emergente"], input[name="capacitacion_modalidad"], input[name="fortigate_conectividad"], input[name="fortiswitch_conectividad"], input[name="fortiap_usuarios"], input[name="fortimail_almacenamiento"], input[name="fortianalyzer_monitoreo"], input[name="forticare_respuesta"], input[name="seguridad_tiempo"], input[name="capacidad_tiempo"], input[name="dispositivo_tiempo"], input[name="adicional_tiempo"]').forEach((radio) => {
-        radio.addEventListener('change', function() {
-            document.getElementById('step5').style.display = 'block';
-        });
-    });
+                    // Para hardware y licencias, mapear según el grupo del Paso 3
+                    const step3Parent = this.closest('.step3-group').id;
+                    if (step3Parent === 'step3-fortigate') {
+                        step4GroupId = 'step4-fortigate-conectividad';
+                    } else if (step3Parent === 'step3-switch') {
+                        step4GroupId = 'step4-fortiswitch-conectividad';
+                    } else if (step3Parent === 'step3-fortiap') {
+                        step4GroupId = 'step4-fortiap-usuarios';
+                    } else if (step3Parent === 'step3-fortimail') {
+                        step4GroupId = 'step4-fortimail-almacenamiento';
+                    } else if (step3Parent === 'step3-analyzer') {
+                        step4GroupId = 'step4-fortianalyzer-monitoreo';
+                    } else if (step3Parent === 'step3-forticare') {
+                        step4GroupId = 'step4-forticare-respuesta';
+                    } else if (step3Parent === 'step3-seguridad') {
+                        step4GroupId = 'step4-seguridad-tiempo';
+                    } else if (step3Parent === 'step3-capacidad') {
+                        step4GroupId = 'step4-capacidad-tiempo';
+                    } else if (step3Parent === 'step3-dispositivo') {
+                        step4GroupId = 'step4-dispositivo-tiempo';
+                    } else if (step3Parent === 'step3-adicional') {
+                        step4GroupId = 'step4-adicional-tiempo';
+                    }
 
-    // Ajuste adicional para hardware y licencias del Paso 3
-    document.querySelectorAll('input[name="fortigate_usuarios"], input[name="switch_puertos"], input[name="fortiap_ubicacion"], input[name="fortimail_volumen"], input[name="analyzer_logs"], input[name="forticare_cobertura"], input[name="seguridad_tipo"], input[name="capacidad_tipo"], input[name="dispositivo_tipo"], input[name="adicional_tipo"]').forEach((radio) => {
-        radio.addEventListener('change', function() {
-            document.querySelectorAll('.step4-group').forEach(el => el.style.display = 'none');
-            const step3Parent = this.closest('.step3-group').id;
-            let step4GroupId;
-            if (step3Parent === 'step3-fortigate') {
-                step4GroupId = 'step4-fortigate-conectividad';
-            } else if (step3Parent === 'step3-switch') {
-                step4GroupId = 'step4-fortiswitch-conectividad';
-            } else if (step3Parent === 'step3-fortiap') {
-                step4GroupId = 'step4-fortiap-usuarios';
-            } else if (step3Parent === 'step3-fortimail') {
-                step4GroupId = 'step4-fortimail-almacenamiento';
-            } else if (step3Parent === 'step3-analyzer') {
-                step4GroupId = 'step4-fortianalyzer-monitoreo';
-            } else if (step3Parent === 'step3-forticare') {
-                step4GroupId = 'step4-forticare-respuesta';
-            } else if (step3Parent === 'step3-seguridad') {
-                step4GroupId = 'step4-seguridad-tiempo';
-            } else if (step3Parent === 'step3-capacidad') {
-                step4GroupId = 'step4-capacidad-tiempo';
-            } else if (step3Parent === 'step3-dispositivo') {
-                step4GroupId = 'step4-dispositivo-tiempo';
-            } else if (step3Parent === 'step3-adicional') {
-                step4GroupId = 'step4-adicional-tiempo';
-            }
-            const step4Group = document.getElementById(step4GroupId);
-            if (step4Group) {
-                step4Group.style.display = 'block';
-            }
-            document.getElementById('step5').style.display = 'none';
-        });
-    });
-</script>
+                    // Mostrar el grupo correspondiente del Paso 4
+                    const step4Group = document.getElementById(step4GroupId);
+                    if (step4Group) {
+                        step4Group.style.display = 'block';
+                    }
+                });
+            });
+
+            // Ajuste adicional para hardware y licencias del Paso 3
+            document.querySelectorAll('input[name="fortigate_usuarios"], input[name="switch_puertos"], input[name="fortiap_ubicacion"], input[name="fortimail_volumen"], input[name="analyzer_logs"], input[name="forticare_cobertura"], input[name="seguridad_tipo"], input[name="capacidad_tipo"], input[name="dispositivo_tipo"], input[name="adicional_tipo"]').forEach((radio) => {
+                radio.addEventListener('change', function() {
+                    document.querySelectorAll('.step4-group').forEach(el => el.style.display = 'none');
+                    const step3Parent = this.closest('.step3-group').id;
+                    let step4GroupId;
+                    if (step3Parent === 'step3-fortigate') {
+                        step4GroupId = 'step4-fortigate-conectividad';
+                    } else if (step3Parent === 'step3-switch') {
+                        step4GroupId = 'step4-fortiswitch-conectividad';
+                    } else if (step3Parent === 'step3-fortiap') {
+                        step4GroupId = 'step4-fortiap-usuarios';
+                    } else if (step3Parent === 'step3-fortimail') {
+                        step4GroupId = 'step4-fortimail-almacenamiento';
+                    } else if (step3Parent === 'step3-analyzer') {
+                        step4GroupId = 'step4-fortianalyzer-monitoreo';
+                    } else if (step3Parent === 'step3-forticare') {
+                        step4GroupId = 'step4-forticare-respuesta';
+                    } else if (step3Parent === 'step3-seguridad') {
+                        step4GroupId = 'step4-seguridad-tiempo';
+                    } else if (step3Parent === 'step3-capacidad') {
+                        step4GroupId = 'step4-capacidad-tiempo';
+                    } else if (step3Parent === 'step3-dispositivo') {
+                        step4GroupId = 'step4-dispositivo-tiempo';
+                    } else if (step3Parent === 'step3-adicional') {
+                        step4GroupId = 'step4-adicional-tiempo';
+                    }
+                    const step4Group = document.getElementById(step4GroupId);
+                    if (step4Group) {
+                        step4Group.style.display = 'block';
+                    }
+                });
+            });
+
+            // Paso 4 -> Paso 5 (común para todos)
+            document.querySelectorAll('input[name="implementacion_fortigate"], input[name="implementacion_fortiap"], input[name="implementacion_fortimail"], input[name="implementacion_fortiswitch"], input[name="soporte_bolsa"], input[name="soporte_contrato"], input[name="soporte_emergente"], input[name="capacitacion_modalidad"], input[name="fortigate_conectividad"], input[name="fortiswitch_conectividad"], input[name="fortiap_usuarios"], input[name="fortimail_almacenamiento"], input[name="fortianalyzer_monitoreo"], input[name="forticare_respuesta"], input[name="seguridad_tiempo"], input[name="capacidad_tiempo"], input[name="dispositivo_tiempo"], input[name="adicional_tiempo"]').forEach((radio) => {
+                radio.addEventListener('change', function() {
+                    document.getElementById('step5').style.display = 'block';
+                });
+            });
+
+            // Ajuste adicional para hardware y licencias del Paso 3
+            document.querySelectorAll('input[name="fortigate_usuarios"], input[name="switch_puertos"], input[name="fortiap_ubicacion"], input[name="fortimail_volumen"], input[name="analyzer_logs"], input[name="forticare_cobertura"], input[name="seguridad_tipo"], input[name="capacidad_tipo"], input[name="dispositivo_tipo"], input[name="adicional_tipo"]').forEach((radio) => {
+                radio.addEventListener('change', function() {
+                    document.querySelectorAll('.step4-group').forEach(el => el.style.display = 'none');
+                    const step3Parent = this.closest('.step3-group').id;
+                    let step4GroupId;
+                    if (step3Parent === 'step3-fortigate') {
+                        step4GroupId = 'step4-fortigate-conectividad';
+                    } else if (step3Parent === 'step3-switch') {
+                        step4GroupId = 'step4-fortiswitch-conectividad';
+                    } else if (step3Parent === 'step3-fortiap') {
+                        step4GroupId = 'step4-fortiap-usuarios';
+                    } else if (step3Parent === 'step3-fortimail') {
+                        step4GroupId = 'step4-fortimail-almacenamiento';
+                    } else if (step3Parent === 'step3-analyzer') {
+                        step4GroupId = 'step4-fortianalyzer-monitoreo';
+                    } else if (step3Parent === 'step3-forticare') {
+                        step4GroupId = 'step4-forticare-respuesta';
+                    } else if (step3Parent === 'step3-seguridad') {
+                        step4GroupId = 'step4-seguridad-tiempo';
+                    } else if (step3Parent === 'step3-capacidad') {
+                        step4GroupId = 'step4-capacidad-tiempo';
+                    } else if (step3Parent === 'step3-dispositivo') {
+                        step4GroupId = 'step4-dispositivo-tiempo';
+                    } else if (step3Parent === 'step3-adicional') {
+                        step4GroupId = 'step4-adicional-tiempo';
+                    }
+                    const step4Group = document.getElementById(step4GroupId);
+                    if (step4Group) {
+                        step4Group.style.display = 'block';
+                    }
+                    document.getElementById('step5').style.display = 'none';
+                });
+            });
+        </script>
+        <!-- SPECIFIC SCRIPTS -->
+	<script>
+		'use strict';
+		$(".team-carousel").owlCarousel({
+			items: 1,
+			loop: false,
+			margin: 10,
+			autoplay: false,
+			smartSpeed: 300,
+			responsiveClass: false,
+			responsive: {
+				320: {
+					items: 1,
+				},
+				768: {
+					items: 2,
+				},
+				1000: {
+					items: 3,
+				}
+			}
+		});
+	</script>
+
 </body>
 </html>
